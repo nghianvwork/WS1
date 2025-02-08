@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="img/DICH VU TRONG GIU THU CUNG.png"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOANG GIA BUILDING</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+     <style>
+            .sidebar {
+                width: 200px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                background-color: #339900;
+                padding-top: 20px;
+                box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            }
+            .sidebar .nav-link {
+                color: #ffffff;
+                padding: 15px;
+                border-radius: 5px;
+                transition: background-color 0.3s, color 0.3s;
+            }
+            .sidebar .nav-link:hover {
+                background-color: #495057;
+                color: #ffffff;
+            }
+            .sidebar .nav-link.active {
+                /*                background-color: red;*/
+                color: #ffffff;
+            }
+            .sidebar .nav-item + .nav-item {
+                margin-top: 10px;
+            }
+        </style>
+</head>
+<body>
+    
+    
+    <div class="sidebar">
+            <div class="nav-logo">
+                <img src="img/DỊCH VỤ TRÔNG GIỮ THÚ CƯNG (1).png" alt style="    width: 250px;
+                     height: 255px;border-radius: 20%;margin-left: -28px;margin-top: -50px;"/>
+
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="manage-department">DORM MANAGEMENT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="manage-room">ROOM MANAGEMENT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="manage-service">SERVICE MANAGEMENT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="manage-request">ROOM REQUEST</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="manage-bill">MANAGE BILL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="manage-payment">PAYMENT HISTORY</a>
+                </li>
+            </ul>
+        </div>  
+    <div class="container-fluid" style="position: relative">
+        <form class="form-inline my-2 my-lg-0">
+                        <a class="btn btn-outline-light my-2 my-sm-0" href="logout" style="position: absolute;right: 0;top: 0;color: red;z-index: 1000">Log out</a>
+                    </form>
+        <div class="row">
+            <div class="col-md-2">
+                <!-- Sidebar -->
+                
+            </div>
+            <div class="col-md-10">
+                <h2>DORM MANAGEMENT</h2>
+                <br><br>
+
+                <!-- Search Form -->
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search by dorm Name" id="searchInput">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" onclick="searchDorms()">Search</button>
+                    </div>
+                </div>
+
+                <!-- Room List -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Dorm ID</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Empty room</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>101</td>
+                            <td>Dorm A</td>
+                            <td>123 Street, City</td>
+                            <td>5</td>
+                            <td>
+                                <button type="button" class="btn btn-primary">Update</button>
+                                <button type="button" class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Add Button -->
+                <button type="button" class="btn btn-success mt-3">Add Dorm</button>
+            </div>
+        </div>
+    </div>
+
+   
+   
+</body>
+</html>
+
