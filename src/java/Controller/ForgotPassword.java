@@ -20,7 +20,7 @@ public class ForgotPassword extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("forgot-password.html");
+        req.getRequestDispatcher("forgot-password.html").forward(req, resp);
     }
     //linh inh
 }

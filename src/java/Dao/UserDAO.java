@@ -102,17 +102,5 @@ public class UserDAO extends DBContext {
     }
 
    
-    public Users getUserByID(int userID) {
-        Users user = null;
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Userss WHERE UserID = ?")) {
-            stmt.setInt(1, userID);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                user = extractUserFromResultSet(rs);
-            }
-        } catch (SQLException e) {
-            System.out.println("getUserByUsersID: " + e.getMessage());
-        }
-        return user;
-    }
+
 }

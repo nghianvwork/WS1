@@ -42,6 +42,7 @@ public class UpdatePassword extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
     }
 
     /**
@@ -58,7 +59,7 @@ public class UpdatePassword extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        // Retrieve user from database based on username
+      
         Users user = new UserDAO().getUserByUsername(username);
 
         if (user != null) {
@@ -66,7 +67,7 @@ public class UpdatePassword extends HttpServlet {
             new UserDAO().updatePassword(user);
             response.sendRedirect("login");
         } else {
-            // Username not found
+           
             request.setAttribute("error", "username");
             request.getRequestDispatcher("forgot-password.html").forward(request, response);
         }
