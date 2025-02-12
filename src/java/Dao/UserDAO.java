@@ -36,16 +36,17 @@ public class UserDAO extends DBContext {
             PreparedStatement pre = conn.prepareStatement(sql);
             pre.setString(1, us.getPasswordHash());
             pre.setInt(2, us.getUserID());
+            System.out.println(us.getPasswordHash());
             pre.executeUpdate();
         } catch (SQLException e) {
 
         }
     }
-    private static final String SQL_SELECT_BY_USERNAME = "SELECT * FROM Users WHERE username = ?";
-
+   
     public Users getUserByUsername(String username) {
         Users user = null;
-        try (PreparedStatement stmt = conn.prepareStatement(SQL_SELECT_BY_USERNAME)) {
+        String sql = "SELECT * FROM Users WHERE username = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
