@@ -78,7 +78,7 @@ public class LoginController extends HttpServlet {
                 response.sendRedirect("HomeAdmin.html");
             }
         } else {
-            // Authentication failed, redirect back to login page with appropriate error message
+            
             if (user == null) {
                 // Username not found
                 request.setAttribute("error", "username");

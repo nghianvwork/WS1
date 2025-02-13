@@ -20,7 +20,7 @@ public class Users {
     private String role; // 'User', 'Manager'
     private LocalDateTime registrationDate;
 
-    // Constructors, getters, and setters
+    
 
     public Users() {
     }

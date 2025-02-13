@@ -59,7 +59,7 @@ public class UpdatePassword extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        System.out.println("Pass"+password);
+        
         Users user = new UserDAO().getUserByUsername(username);
 
         if (user != null) {
