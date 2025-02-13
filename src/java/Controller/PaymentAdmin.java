@@ -5,8 +5,6 @@
 
 package Controller;
 
-import Dao.UserDAO;
-import Model.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -19,8 +17,8 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author admin
  */
-@WebServlet(urlPatterns = "/login")
-public class LoginController extends HttpServlet {
+@WebServlet(name="PaymentAdmin", urlPatterns={"/paymentAdmin"})
+public class PaymentAdmin extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -37,10 +35,10 @@ public class LoginController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginController</title>");  
+            out.println("<title>Servlet PaymentAdmin</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginController at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet PaymentAdmin at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -56,42 +54,30 @@ public class LoginController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-          request.getRequestDispatcher("login.html").forward(request, response);
-    }
+    throws ServletException, IOException {
+       request.getRequestDispatcher("index.html").forward(request, response);
+    } 
 
+    /** 
+     * Handles the HTTP <code>POST</code> method.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        // Retrieve user from database based on username
-        Users user = new UserDAO().getUserByUsername(username);
-
-        if (user != null && user.getPasswordHash().equals(password)) {
-            request.getSession().setAttribute("user", user);
-            if (user.getRole().equalsIgnoreCase("user")) {
-
-                response.sendRedirect("HomeUser.html");
-
-            } else {
-                response.sendRedirect("HomeAdmin.html");
-            }
-        } else {
-            
-            if (user == null) {
-                
-                request.setAttribute("error", "username");
-            } else {
-                
-                request.setAttribute("error", "password");
-            }
-            request.getRequestDispatcher("login.html").forward(request, response);
-        }
+    throws ServletException, IOException {
+        processRequest(request, response);
     }
+
+    /** 
+     * Returns a short description of the servlet.
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 
 }
